@@ -1,0 +1,12 @@
+{
+  "projectId": "bpharmhub-portal",
+  "appId": "1:796240054507:web:ee3d56529a67f030c296ae",
+  "apiKey": "AIzaSyC-qTpw_Jxar_g2uvHjd8_bLtHV_2pQOkk",
+  "authDomain": "bpharmhub-portal.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "bpharmhub-portal.firebasestorage.app",
+  "messagingSenderId": "796240054507",
+  "measurementId": "G-EDD2J4T1X6",
+  "oAuthClientId": "",
+  "recaptchaSiteKey": ""
+}

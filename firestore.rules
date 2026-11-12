@@ -1,0 +1,186 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Hardened Global Primitives
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isVerifiedUser() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == "aryantiwaritiwari3@gmail.com"
+      );
+    }
+
+    // 3. Entity Validation Blueprints
+    function isValidSubject(data) {
+      return data.keys().hasAll(['code', 'title', 'slug', 'semester', 'category', 'summary', 'unitsCount', 'trending', 'createdAt']) &&
+        data.keys().hasOnly(['code', 'title', 'slug', 'semester', 'category', 'summary', 'unitsCount', 'trending', 'createdAt']) &&
+        data.code is string && data.code.size() >= 2 && data.code.size() <= 20 && data.code.matches('^[A-Z0-9\\-]+$') &&
+        data.title is string && data.title.size() >= 3 && data.title.size() <= 140 &&
+        data.slug is string && data.slug.size() >= 2 && data.slug.size() <= 120 && data.slug.matches('^[a-z0-9\\-]+$') &&
+        data.semester is int && data.semester >= 1 && data.semester <= 8 &&
+        data.category is string && data.category.size() >= 2 && data.category.size() <= 60 &&
+        data.summary is string && data.summary.size() >= 5 && data.summary.size() <= 500 &&
+        data.unitsCount is int && data.unitsCount >= 1 && data.unitsCount <= 10 &&
+        data.trending is bool &&
+        data.createdAt is string && data.createdAt.size() >= 10 && data.createdAt.size() <= 40;
+    }
+
+    function isValidResourceItem(data) {
+      return data.keys().hasAll([
+          'title', 'subjectSlug', 'subjectCode', 'subjectTitle', 'semester',
+          'type', 'unitNumber', 'university', 'pages', 'fileSize',
+          'summary', 'previewContent', 'featured', 'downloads', 'authorUid', 'createdAt'
+        ]) &&
+        data.keys().hasOnly([
+          'title', 'subjectSlug', 'subjectCode', 'subjectTitle', 'semester',
+          'type', 'unitNumber', 'university', 'pages', 'fileSize',
+          'summary', 'previewContent', 'pdfDataUrl', 'featured', 'downloads', 'authorUid', 'createdAt'
+        ]) &&
+        data.title is string && data.title.size() >= 3 && data.title.size() <= 180 &&
+        data.subjectSlug is string && data.subjectSlug.size() >= 2 && data.subjectSlug.size() <= 120 && data.subjectSlug.matches('^[a-z0-9\\-]+$') &&
+        data.subjectCode is string && data.subjectCode.size() >= 2 && data.subjectCode.size() <= 20 &&
+        data.subjectTitle is string && data.subjectTitle.size() >= 3 && data.subjectTitle.size() <= 140 &&
+        data.semester is int && data.semester >= 1 && data.semester <= 8 &&
+        data.type is string && data.type in ['notes', 'syllabus', 'pyqs', 'important-questions', 'short-notes'] &&
+        data.unitNumber is int && data.unitNumber >= 0 && data.unitNumber <= 10 &&
+        data.university is string && data.university.size() >= 2 && data.university.size() <= 80 &&
+        data.pages is int && data.pages >= 1 && data.pages <= 1000 &&
+        data.fileSize is string && data.fileSize.size() >= 2 && data.fileSize.size() <= 30 &&
+        data.summary is string && data.summary.size() >= 5 && data.summary.size() <= 600 &&
+        data.previewContent is string && data.previewContent.size() >= 5 && data.previewContent.size() <= 4000 &&
+        (!('pdfDataUrl' in data) || (data.pdfDataUrl is string && data.pdfDataUrl.size() <= 900000)) &&
+        data.featured is bool &&
+        data.downloads is int && data.downloads >= 0 &&
+        data.authorUid is string && data.authorUid.size() >= 1 && data.authorUid.size() <= 128 &&
+        data.authorUid == request.auth.uid &&
+        data.createdAt is string && data.createdAt.size() >= 10 && data.createdAt.size() <= 40;
+    }
+
+    function isValidBlogPost(data) {
+      return data.keys().hasAll([
+          'title', 'slug', 'category', 'readTime', 'publishedDate',
+          'excerpt', 'content', 'imageUrl', 'authorName', 'authorUid', 'createdAt'
+        ]) &&
+        data.keys().hasOnly([
+          'title', 'slug', 'category', 'readTime', 'publishedDate',
+          'excerpt', 'content', 'imageUrl', 'authorName', 'authorUid', 'createdAt'
+        ]) &&
+        data.title is string && data.title.size() >= 5 && data.title.size() <= 180 &&
+        data.slug is string && data.slug.size() >= 3 && data.slug.size() <= 140 && data.slug.matches('^[a-z0-9\\-]+$') &&
+        data.category is string && data.category.size() >= 2 && data.category.size() <= 60 &&
+        data.readTime is string && data.readTime.size() >= 2 && data.readTime.size() <= 30 &&
+        data.publishedDate is string && data.publishedDate.size() >= 4 && data.publishedDate.size() <= 40 &&
+        data.excerpt is string && data.excerpt.size() >= 10 && data.excerpt.size() <= 500 &&
+        data.content is string && data.content.size() >= 20 && data.content.size() <= 8000 &&
+        data.imageUrl is string && data.imageUrl.size() >= 1 && data.imageUrl.size() <= 300 &&
+        data.authorName is string && data.authorName.size() >= 2 && data.authorName.size() <= 80 &&
+        data.authorUid is string && data.authorUid.size() >= 1 && data.authorUid.size() <= 128 &&
+        data.authorUid == request.auth.uid &&
+        data.createdAt is string && data.createdAt.size() >= 10 && data.createdAt.size() <= 40;
+    }
+
+    function isValidBookmark(data) {
+      return data.keys().hasAll(['userId', 'resourceId', 'resourceTitle', 'subjectSlug', 'semester', 'type', 'createdAt']) &&
+        data.keys().hasOnly(['userId', 'resourceId', 'resourceTitle', 'subjectSlug', 'semester', 'type', 'createdAt']) &&
+        data.userId is string && data.userId.size() >= 1 && data.userId.size() <= 128 && data.userId.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.userId == request.auth.uid &&
+        data.resourceId is string && data.resourceId.size() >= 1 && data.resourceId.size() <= 128 && data.resourceId.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.resourceTitle is string && data.resourceTitle.size() >= 3 && data.resourceTitle.size() <= 180 &&
+        data.subjectSlug is string && data.subjectSlug.size() >= 2 && data.subjectSlug.size() <= 120 &&
+        data.semester is int && data.semester >= 1 && data.semester <= 8 &&
+        data.type is string && data.type.size() >= 2 && data.type.size() <= 40 &&
+        data.createdAt is string && data.createdAt.size() >= 10 && data.createdAt.size() <= 40;
+    }
+
+    // 4. Collection Rules
+    match /admins/{adminUid} {
+      allow get: if isSignedIn() && isValidId(adminUid) && (request.auth.uid == adminUid || isAdmin());
+      allow list, create, update, delete: if false;
+    }
+
+    match /subjects/{subjectId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(subjectId) && isValidSubject(incoming());
+      allow update: if isAdmin() && isValidId(subjectId) && isValidSubject(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['code', 'title', 'slug', 'semester', 'category', 'summary', 'unitsCount', 'trending']);
+      allow delete: if isAdmin() && isValidId(subjectId);
+    }
+
+    match /resources/{resourceId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(resourceId) && isValidResourceItem(incoming());
+      allow update: if isAdmin() && isValidId(resourceId) && isValidResourceItem(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().authorUid == existing().authorUid &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'title', 'subjectSlug', 'subjectCode', 'subjectTitle', 'semester',
+          'type', 'unitNumber', 'university', 'pages', 'fileSize',
+          'summary', 'previewContent', 'pdfDataUrl', 'featured', 'downloads'
+        ]);
+      allow delete: if isAdmin() && isValidId(resourceId);
+
+      match /pdfChunks/{chunkId} {
+        allow get, list: if true;
+        allow create, update: if isAdmin() && isValidId(chunkId) &&
+          incoming().keys().hasAll(['index', 'data']) &&
+          incoming().keys().hasOnly(['index', 'data']) &&
+          incoming().index is int && incoming().index >= 0 && incoming().index <= 200 &&
+          incoming().data is string && incoming().data.size() >= 1 && incoming().data.size() <= 800000;
+        allow delete: if isAdmin() && isValidId(chunkId);
+      }
+    }
+
+    match /blogs/{blogId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(blogId) && isValidBlogPost(incoming());
+      allow update: if isAdmin() && isValidId(blogId) && isValidBlogPost(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().authorUid == existing().authorUid &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'title', 'slug', 'category', 'readTime', 'publishedDate',
+          'excerpt', 'content', 'imageUrl', 'authorName'
+        ]);
+      allow delete: if isAdmin() && isValidId(blogId);
+    }
+
+    match /users/{userId}/bookmarks/{bookmarkId} {
+      allow get: if isOwner(userId) && isValidId(userId) && isValidId(bookmarkId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidId(userId) && isValidId(bookmarkId) && isValidBookmark(incoming());
+      allow update: if isOwner(userId) && isValidId(userId) && isValidId(bookmarkId) && isValidBookmark(incoming()) &&
+        incoming().userId == existing().userId &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['resourceTitle', 'subjectSlug', 'semester', 'type']);
+      allow delete: if isOwner(userId) && isValidId(userId) && isValidId(bookmarkId) && existing().userId == request.auth.uid;
+    }
+  }
+}
