@@ -1,9 +1,9 @@
 import { Subject, ResourceItem, BlogPost, DrugFlashcard, QuizQuestion } from '../types';
 
-export const HERO_LAB_IMAGE = '/src/assets/images/hero_pharma_lab_study_1794398323838.jpg';
-export const BLOG_GPAT_IMAGE = '/src/assets/images/blog_gpat_prep_strategy_1794398326677.jpg';
-export const BLOG_NIPER_IMAGE = '/src/assets/images/blog_niper_career_roadmap_1794398326892.jpg';
-export const BLOG_PCI_IMAGE = '/src/assets/images/blog_pci_syllabus_guide_1794398327615.jpg';
+export const HERO_LAB_IMAGE = '/images/hero_pharma_lab_study_1794398323838.jpg';
+export const BLOG_GPAT_IMAGE = '/images/blog_gpat_prep_strategy_1794398326677.jpg';
+export const BLOG_NIPER_IMAGE = '/images/blog_niper_career_roadmap_1794398326892.jpg';
+export const BLOG_PCI_IMAGE = '/images/blog_pci_syllabus_guide_1794398327615.jpg';
 
 export const INITIAL_SUBJECTS: Subject[] = [
   // Semester 1
