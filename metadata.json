@@ -1,6 +1,0 @@
-{
-  "name": "BPharmHub – B.Pharm Notes, PYQs & Study Tools",
-  "description": "India's complete PCI-aligned study hub for B.Pharm students (Sem 1–8). Access free notes, syllabus, previous year papers (PYQs), important questions, GPAT updates, and exam tools.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
