@@ -20,7 +20,7 @@ import {
 // Web3Forms Access Key for direct-to-inbox student & faculty inquiries
 // Obtain your free access key at https://web3forms.com and set VITE_WEB3FORMS_ACCESS_KEY in .env
 export const WEB3FORMS_ACCESS_KEY =
-  (import.meta as any).env?.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE';
+  (import.meta as any).env?.VITE_WEB3FORMS_ACCESS_KEY || 'd6be551d-88e7-453c-9cb0-9126d136a2a3';
 
 export type StaticPageType = 'about' | 'contact' | 'privacy' | 'disclaimer' | 'dmca';
 

@@ -10,7 +10,7 @@ export const getActiveRazorpayKey = (): string => {
   } catch {
     // ignore
   }
-  return (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'YOUR_RAZORPAY_KEY_ID';
+  return (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_live_TzFIfYL0hhE4kn';
 };
 
 export const setStoredRazorpayKey = (key: string): void => {
