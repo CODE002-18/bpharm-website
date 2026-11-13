@@ -151,7 +151,7 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
             </div>
             <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-subtle)] p-4">
               <div className="font-mono text-xl font-bold text-[var(--brand-teal)]">75-Mark Pattern</div>
-              <div className="mt-0.5 text-xs font-semibold text-[var(--text-primary)]">Section A, B &amp; C Solved PYQs</div>
+              <div className="mt-0.5 text-xs font-semibold text-[var(--text-primary)]">Section A, B &amp; C</div>
               <p className="mt-1.5 text-xs text-[var(--text-secondary)]">
                 Tailored strictly to AKTU’s external theory exam format: Section A (10×2=20), Section B (2×10=20), and
                 Section C (5×7=35).
@@ -190,18 +190,12 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">Previous Year Question Papers (Solved PYQs):</strong>{' '}
-                Last 5 years of AKTU end-semester question papers with model answers formatted with headings, labelled
-                diagrams, and chemical structures to help you score 60+ out of 75 in external theory.
+                Last 5 years of AKTU end-semester question papers to help you score 60+ out of 75 in external theory.
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">Most Important Questions (Sessional &amp; End-Sem):</strong>{' '}
                 High-frequency 2-mark, 7-mark, and 10-mark questions curated from repeated AKTU exam trends for rapid
                 night-before revision.
-              </li>
-              <li>
-                <strong className="text-[var(--text-primary)]">Short Notes &amp; Reaction Cheat Sheets:</strong>{' '}
-                Single-page summary charts for named organic reactions, drug classifications, pharmacognosy biological
-                sources/chemical tests, and pharmaceutical analysis formulas.
               </li>
             </ul>
           </div>
