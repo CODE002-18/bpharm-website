@@ -189,11 +189,11 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
                 Council of India (PCI Regulation).
               </li>
               <li>
-                <strong className="text-[var(--text-primary)]">Previous Year Question Papers (Solved PYQs):</strong>{' '}
+                <strong className="text-[var(--text-primary)]">Previous Year Question Papers:</strong>{' '}
                 Last 5 years of AKTU end-semester question papers to help you score 60+ out of 75 in external theory.
               </li>
               <li>
-                <strong className="text-[var(--text-primary)]">Most Important Questions (Sessional &amp; End-Sem):</strong>{' '}
+                <strong className="text-[var(--text-primary)]">Guess Papers (Sessional &amp; End-Sem):</strong>{' '}
                 High-frequency 2-mark, 7-mark, and 10-mark questions curated from repeated AKTU exam trends for rapid
                 night-before revision.
               </li>
