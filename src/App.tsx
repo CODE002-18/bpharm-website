@@ -980,7 +980,7 @@ export default function App() {
                 </div>
                 <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-5">
                   <div className="font-semibold text-sm text-[var(--text-primary)]">
-                    02. Complete AKTU PYQ &amp; Section A/B/C
+                    02. Complete AKTU PYQs &amp; Section A/B/C
                   </div>
                   <p className="mt-1.5 text-xs leading-relaxed text-[var(--text-secondary)]">
                     Comprehensive AKTU previous year question papers (PYQs) organized by semester and subject,
@@ -990,7 +990,7 @@ export default function App() {
                 </div>
                 <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-5">
                   <div className="font-semibold text-sm text-[var(--text-primary)]">
-                    03. High-Yield Guess Paper &amp; PYQs
+                    03. High-Yield Guess Papers
                   </div>
                   <p className="mt-1.5 text-xs leading-relaxed text-[var(--text-secondary)]">
                     Curated semester-end guess papers and important questions compiled from previous 5-year exam trends
