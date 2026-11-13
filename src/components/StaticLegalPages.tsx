@@ -492,7 +492,7 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
             <p>
               Students are <strong>not required</strong> to create an account, sign in, or provide personal details
               (such as phone numbers, roll numbers, or home addresses) to browse semesters, read unit-wise notes,
-              preview solved AKTU PYQs, download PDF files, or use the AKTU CGPA &amp; Percentage Calculator. Google
+              preview AKTU PYQs, download PDF files, or use the AKTU CGPA &amp; Percentage Calculator. Google
               Authentication on this platform is restricted strictly to authorized site administrators for uploading and
               managing study materials.
             </p>
