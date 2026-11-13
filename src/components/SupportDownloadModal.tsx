@@ -205,11 +205,10 @@ export const SupportDownloadModal: React.FC<SupportDownloadModalProps> = ({
                     key={amt}
                     type="button"
                     onClick={() => setSelectedAmount(amt)}
-                    className={`rounded-2xl py-3 text-center text-base font-bold transition-all ${
-                      isSelected
+                    className={`rounded-2xl py-3 text-center text-base font-bold transition-all ${isSelected
                         ? 'bg-gradient-to-r from-[#0D5C63] to-[#2EC4B6] text-white shadow-lg shadow-teal-700/25 dark:shadow-teal-500/30 scale-[1.02] border border-transparent dark:border-[#2EC4B6]'
                         : 'border border-[var(--border-hairline)] bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:border-[var(--brand-teal)]/40 hover:bg-[var(--bg-canvas)] dark:border-[#1E383C] dark:bg-[#122428]/70 dark:text-slate-200 dark:hover:bg-[#122428] dark:hover:border-[#2EC4B6]/50 dark:hover:text-white'
-                    }`}
+                      }`}
                   >
                     ₹{amt}
                   </button>

@@ -588,14 +588,6 @@ export default function App() {
             <span className="font-mono text-[11px] font-semibold text-[var(--brand-teal)] whitespace-nowrap">
               AKTU B.PHARM HUB (SEM 1–8 · PCI SYLLABUS)
             </span>
-            <span aria-hidden="true">·</span>
-            <button
-              type="button"
-              onClick={() => navigate('/sem-3/pharmaceutical-organic-chemistry/notes')}
-              className="hover:text-[var(--brand-teal)] hover:underline whitespace-nowrap"
-            >
-              Quick Jump: /sem-3/pharmaceutical-organic-chemistry/notes →
-            </button>
           </div>
 
           <div className="flex items-center gap-3">
