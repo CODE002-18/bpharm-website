@@ -706,15 +706,6 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
               />
             </div>
 
-            <label className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
-              <input
-                type="checkbox"
-                checked={resFeatured}
-                onChange={(e) => setResFeatured(e.target.checked)}
-                className="rounded border-[var(--border-hairline)]"
-              />
-              Feature on Home Page
-            </label>
 
             <button
               type="submit"
@@ -852,15 +843,6 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
               />
             </div>
 
-            <label className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
-              <input
-                type="checkbox"
-                checked={subTrending}
-                onChange={(e) => setSubTrending(e.target.checked)}
-                className="rounded border-[var(--border-hairline)]"
-              />
-              Mark as Trending Subject
-            </label>
 
             <button
               type="submit"
