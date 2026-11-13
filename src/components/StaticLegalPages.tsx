@@ -399,7 +399,7 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
                       required
                       value={contactMessage}
                       onChange={(e) => setContactMessage(e.target.value)}
-                      placeholder="Mention the AKTU Subject Code (e.g. BP402T Medicinal Chemistry I, Unit 3) and whether you need Notes, Solved PYQs, or Important Questions..."
+                      placeholder="Mention the AKTU Subject Code (e.g. BP402T Medicinal Chemistry I, Unit 3) and whether you need Notes, PYQs, or Important Questions..."
                       className="mt-1 w-full rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3.5 text-xs text-[var(--text-primary)]"
                     />
                   </div>
@@ -544,7 +544,7 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
               4. Cookies, Google AdSense &amp; Third-Party Advertising Disclosure
             </h2>
             <p>
-              To keep all AKTU B.Pharm PDF notes and solved PYQs 100% free of charge, BPharmHub may display
+              To keep all AKTU B.Pharm PDF notes and PYQs 100% free of charge, BPharmHub may display
               non-intrusive educational sponsorships or advertisements served by <strong>Google AdSense</strong> and
               certified advertising partners:
             </p>
@@ -611,7 +611,7 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
               Academic, University Non-Affiliation &amp; Clinical Medical Disclaimer
             </h1>
             <p className="mt-1 text-xs text-[var(--text-muted)]">
-              Applicable to all study PDFs, PYQ solutions, articles, and tools on bpharmhub.xyz
+              Applicable to all study PDFs, PYQ, articles, and tools on bpharmhub.xyz
             </p>
           </div>
 
@@ -688,13 +688,13 @@ export const StaticLegalPages: React.FC<StaticLegalPagesProps> = ({ page, onNavi
 
           <div className="space-y-2">
             <h2 className="text-base font-bold text-[var(--text-primary)]">
-              3. Accuracy of Study Notes, Solved PYQs &amp; CGPA Calculator
+              3. Accuracy of Study Notes, PYQs &amp; CGPA Calculator
             </h2>
             <p>
-              While our academic team carefully reviews every unit note, chemical structure, and solved Section A/B/C
-              question paper against standard textbooks, human typographical errors in chemical rings, reaction
-              conditions, or numerical calculations may occasionally occur. Students are encouraged to cross-verify
-              critical derivations with their college faculty and prescribed textbooks.
+              While our academic team carefully reviews every unit note, chemical structure, and Section A/B/C Guess
+              Paper against standard textbooks, human typographical errors in chemical rings, reaction conditions,
+              or numerical calculations may occasionally occur. Students are encouraged to cross-verify critical
+              derivations with their college faculty and prescribed textbooks.
             </p>
             <p>
               Similarly, the <strong>AKTU B.Pharm CGPA &amp; Percentage Calculator</strong> provides an instant estimate
