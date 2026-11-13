@@ -983,8 +983,9 @@ export default function App() {
                     02. Complete AKTU PYQ &amp; Section A/B/C
                   </div>
                   <p className="mt-1.5 text-xs leading-relaxed text-[var(--text-secondary)]">
-                    Dedicated Guess papers tailored strictly for AKTU Lucknow 75-mark theory exams: Section A (2 marks),
-                    Section B (10 marks), and Section C (7 marks).
+                    Comprehensive AKTU previous year question papers (PYQs) organized by semester and subject,
+                    covering Section A (2 marks), Section B (10 marks), and Section C (7 marks) for 75-mark 
+                    theory examinations.
                   </p>
                 </div>
                 <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-5">
