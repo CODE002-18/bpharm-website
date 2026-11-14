@@ -862,7 +862,7 @@ export default function App() {
                           8 Semesters
                         </div>
                         <div className="mt-0.5 text-xs text-[var(--text-secondary)]">
-                          34+ Core & Elective PCI Subjects
+                          52+ Core & Elective PCI Subjects
                         </div>
                       </div>
                       <div>
